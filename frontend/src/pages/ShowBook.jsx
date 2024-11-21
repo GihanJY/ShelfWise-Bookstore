@@ -16,7 +16,7 @@ const ShowBook = () => {
     axios
       .get(`http://localhost:5555/books/${id}`)
       .then((response) => {
-        setBook(response.data);
+        setBook(response.data.book);
         setLoading(false);
       })
       .catch((error) => {
@@ -37,7 +37,7 @@ const ShowBook = () => {
       ) : (
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
           <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>ID</span>
+            <span className='text-xl mr-4 text-gray-500'>Id</span>
             <span>{book._id}</span>
           </div>
           <div className='my-4'>
@@ -67,4 +67,3 @@ const ShowBook = () => {
 };
 
 export default ShowBook;
-
