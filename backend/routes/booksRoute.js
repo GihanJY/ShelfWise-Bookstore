@@ -8,16 +8,18 @@ router.post("/", async (request, response) => {
       if (
         !request.body.title ||
         !request.body.author ||
-        !request.body.publishedYear
+        !request.body.publishedYear ||
+        !request.body.imageURL
       ) {
         return response.status(400).send({
-          message: "Send all required fields: title, author, publishedYear",
+          message: "Send all required fields: title, author, publishedYear and imageURL",
         });
       }
       const newBook = {
         title: request.body.title,
         author: request.body.author,
         publishedYear: request.body.publishedYear,
+        imageURL: request.body.imageURL
       };
   
       const book = await Book.create(newBook);
@@ -107,3 +109,4 @@ router.post("/", async (request, response) => {
   });
 
 export default router;
+

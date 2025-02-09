@@ -27,38 +27,46 @@ const ShowBook = () => {
   }, [id]);
 
   return (
-    <div className='p-4'>
+    <div className='p-4 ml-10 mr-10'>
+      <div className='flex'>
       <BackButton />
-
-      <h1 className='text-3xl my-4'>Show Book</h1>
-
+      <h1 className='text-2xl font-semibold my-4'>Show Book</h1>
+      </div>
+      <hr className="h-0.5 bg-blue-200 mb-5"/>
       {loading ? (
         <Spinner />
       ) : (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Id</span>
-            <span>{book._id}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Title</span>
-            <span>{book.title}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Author</span>
-            <span>{book.author}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Published Year</span>
-            <span>{book.publishedYear}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Created Time</span>
-            <span>{new Date(book.createdAt).toString()}</span>
-          </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Updated Time</span>
-            <span>{new Date(book.updatedAt).toString()}</span>
+        <div className='flex flex-row w-fit p-4'>
+          <table className='w-full border-separate border-spacing-2 pl-10 pr-10'>
+            <tbody>
+              <tr>
+                <td className='rounded-md text-left font-semibold min-w-44'>Id</td>
+                <td className='rounded-md text-left'>{book._id}</td>
+              </tr>
+              <tr>
+                <td className='rounded-md text-left font-semibold'>Title</td>
+                <td className='rounded-md text-left'>{book.title}</td>
+              </tr>
+              <tr>
+                <td className='rounded-md text-left font-semibold'>Author</td>
+                <td className='rounded-md text-left'>{book.author}</td>
+              </tr>
+              <tr>
+                <td className='rounded-md text-left font-semibold'>Published Year</td>
+                <td className='rounded-md text-left'>{book.publishedYear}</td>
+              </tr>
+              <tr>
+                <td className='rounded-md text-left font-semibold'>Created Time</td>
+                <td className='rounded-md text-left'>{new Date(book.createdAt).toString()}</td>
+              </tr>
+              <tr>
+                <td className='rounded-md text-left font-semibold'>Updated Time</td>
+                <td className='rounded-md text-left'>{new Date(book.updatedAt).toString()}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <img src={book.imageURL} alt="book-cover" className='flex w-96 justify-center'/>
           </div>
         </div>
       )}
